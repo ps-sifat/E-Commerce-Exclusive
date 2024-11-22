@@ -57,3 +57,42 @@
   --Poppins: "Poppins", sans-serif;
   --Inter: "Inter", serif;
 }
+
+@layer components {
+  .menu_line {
+    position: relative;
+  }
+  .menu_line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--black_2_363738);
+    transition: 0.4s ease-in;
+  }
+  .menu_line:hover::after {
+    width: 100%;
+  }
+
+  .cart_count {
+    position: relative;
+  }
+
+  .cart_count::after {
+    position: absolute;
+    content: "0";
+    right: -5px;
+    top: -5px;
+    height: 16px;
+    width: 16px;
+    border-radius: 100%;
+    background: var(--button_red_2_DB4444);
+    font-size: 14px;
+    color: var(--white);
+    line-height: 16px;
+    text-align: center;
+    /* background-color: #da1f1f88; */
+  }
+}

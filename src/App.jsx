@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Components/RootLayout/Header";
+import Navbar from "./Components/RootLayout/Navbar";
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -11,7 +12,14 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" />
-      <Route path="/home" element={<Header />} />
+      <Route
+        path="/home"
+        element={
+          <>
+            <Header /> <Navbar />
+          </>
+        }
+      />
     </Route>
   )
 );
