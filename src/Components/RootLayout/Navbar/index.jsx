@@ -61,9 +61,19 @@ const Navbar = () => {
   const [Account, setAccount] = useState(false);
   const userAccountRef = useRef(null);
 
-  const handelAccount = () => {
-    setAccount(!Account);
-  };
+  useEffect(() => {
+    window.addEventListener("click", (event) => {
+      if (userAccountRef.current.contains(event.target)) {
+        setAccount(!Account);
+      } else {
+        setAccount(false);
+      }
+    });
+  }, [Account]);
+
+  // const handelAccount = () => {
+  //   setAccount(!Account);
+  // };
   console.log(userAccountRef.current);
 
   return (
@@ -124,18 +134,19 @@ const Navbar = () => {
               <div className="w-8 h-8 bg-red_DB4444 rounded-full flex justify-center items-center ">
                 <span
                   className="text-white text-xl cursor-pointer "
-                  onClick={handelAccount}
+                  ref={userAccountRef}
+                  // onClick={handelAccount}
                 >
                   <RiUserLine />
                   {Account && (
-                    <ul className="w-[224px] rounded absolute top-full left-0 -translate-x-[43%] translate-y-1 gap-3 flex flex-col bg-gradient-to-b from-gray-800/70 via-gray-900/80 to-gray-800/90 backdrop-blur-sm py-[18px] px-5 ">
+                    <ul className="w-[224px] rounded absolute top-full left-0 -translate-x-[43%] translate-y-1 gap-3 flex flex-col bg-gradient-to-b from-gray-800/70 via-gray-900/80 to-gray-800/90 backdrop-blur-lg border-2">
                       {/* bg-gradient-to-r from-text_fafafa to-[#000000]
                        */}
                       {usermenu?.map((menu) => (
                         <li key={menu.id}>
                           <a
                             href={menu.link}
-                            className="flex items-center gap-x-4 text-sm font-normal font-Poppins leading-6 text-text_fafafa"
+                            className="flex items-center gap-x-4 py-2 px-4 text-sm font-normal font-Poppins leading-6 text-text_fafafa hover:bg-[rgba(255,255,255,0.44)] hover:text-text_black_000"
                           >
                             <span className="text-[28px]">{menu.icon}</span>
                             {menu.item}
