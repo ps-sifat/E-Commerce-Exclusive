@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaRegHeart, FaRegStar } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { ImCancelCircle } from "react-icons/im";
+import { IoMdStarOutline } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
-import { LuShoppingBag } from "react-icons/lu";
-import { MdOutlineCancel, MdOutlineShoppingCart } from "react-icons/md";
-import { RiUserLine } from "react-icons/ri";
-import { TbLogout2 } from "react-icons/tb";
+import { LuShoppingBag, LuUser } from "react-icons/lu";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { RiLogoutCircleLine, RiUserLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -26,55 +27,12 @@ const Navbar = () => {
       item: "Sign Up",
     },
   ];
-  const usermenu = [
-    {
-      id: 1,
-      item: "Manage My Account",
-      link: "#",
-      icon: <RiUserLine />,
-    },
-    {
-      id: 2,
-      item: "My Order",
-      link: "#",
-      icon: <LuShoppingBag />,
-    },
-    {
-      id: 3,
-      item: "My Cancellations",
-      link: "#",
-      icon: <MdOutlineCancel />,
-    },
-    {
-      id: 4,
-      item: "My Reviews",
-      link: "#",
-      icon: <FaRegStar />,
-    },
-    {
-      id: 5,
-      item: "Logout",
-      link: "#",
-      icon: <TbLogout2 />,
-    },
-  ];
+
   const [Account, setAccount] = useState(false);
   const userAccountRef = useRef(null);
-
-  useEffect(() => {
-    window.addEventListener("click", (event) => {
-      if (userAccountRef.current.contains(event.target)) {
-        setAccount(!Account);
-      } else {
-        setAccount(false);
-      }
-    });
-  }, [Account]);
-
-  // const handelAccount = () => {
-  //   setAccount(!Account);
-  // };
-  console.log(userAccountRef.current);
+  const handelAccount = () => {
+    setAccount(!Account);
+  };
 
   return (
     <>
@@ -134,28 +92,57 @@ const Navbar = () => {
               <div className="w-8 h-8 bg-red_DB4444 rounded-full flex justify-center items-center ">
                 <span
                   className="text-white text-xl cursor-pointer "
+                  onClick={handelAccount}
                   ref={userAccountRef}
-                  // onClick={handelAccount}
                 >
                   <RiUserLine />
-                  {Account && (
-                    <ul className="w-[224px] rounded absolute top-full left-0 -translate-x-[43%] translate-y-1 gap-3 flex flex-col bg-gradient-to-b from-gray-800/70 via-gray-900/80 to-gray-800/90 backdrop-blur-lg border-2">
-                      {/* bg-gradient-to-r from-text_fafafa to-[#000000]
-                       */}
-                      {usermenu?.map((menu) => (
-                        <li key={menu.id}>
-                          <a
-                            href={menu.link}
-                            className="flex items-center gap-x-4 py-2 px-4 text-sm font-normal font-Poppins leading-6 text-text_fafafa hover:bg-[rgba(255,255,255,0.44)] hover:text-text_black_000"
-                          >
-                            <span className="text-[28px]">{menu.icon}</span>
-                            {menu.item}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </span>
+                {Account && (
+                  <div
+                    className={`absolute right-[0%] top-[150%] z-30 bg-[rgba(0,0,0,0.68)] w-[300px] flex flex-col gap-y-5 py-7 rounded `}
+                  >
+                    <div className="flex items-center gap-x-2 hover:bg-white_F5F5F5 hover:py-3 transition-all hover:text-text_black000000 text-white_F5F5F5 pl-5 hover:cursor-pointer hover:bg-slate-300 hover:text-black">
+                      <span className=" text-3xl ">
+                        <LuUser />
+                      </span>
+                      <h3 className="text-xl font-normal font-popins ">
+                        Manage My Account
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-x-2 hover:bg-white_F5F5F5 hover:py-3 transition-all  hover:text-text_black000000 text-text_whiteFAFAFA pl-5 hover:cursor-pointer hover:bg-slate-300 hover:text-black">
+                      <span className=" text-3xl">
+                        <LuShoppingBag />
+                      </span>
+                      <h3 className="text-xl font-normal font-popins">
+                        My Order
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-x-2 hover:bg-white_F5F5F5 hover:py-3 transition-all  hover:text-text_black000000 text-text_whiteFAFAFA pl-5 hover:cursor-pointer hover:bg-slate-300 hover:text-black">
+                      <span className=" text-3xl">
+                        <ImCancelCircle />
+                      </span>
+                      <h3 className=" text-xl font-normal font-popins">
+                        My Cancellations
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-x-2 hover:bg-white_F5F5F5 hover:py-3 transition-all  hover:text-text_black000000 text-text_whiteFAFAFA pl-5 hover:cursor-pointer hover:bg-slate-300 hover:text-black">
+                      <span className=" text-3xl">
+                        <IoMdStarOutline />
+                      </span>
+                      <h3 className="text-xl font-normal font-popins">
+                        My Reviews
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-x-2 hover:bg-white_F5F5F5 hover:py-3 transition-all  hover:text-text_black000000 text-text_whiteFAFAFA pl-5 hover:cursor-pointer hover:bg-slate-300 hover:text-black">
+                      <span className="text-3xl">
+                        <RiLogoutCircleLine />
+                      </span>
+                      <h3 className="text-xl font-normal font-popins">
+                        Logout
+                      </h3>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
