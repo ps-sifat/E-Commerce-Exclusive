@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Components/RootLayout/Header";
 import Navbar from "./Components/RootLayout/Navbar";
+import Banner from "./Components/HomePage/Banner/Index";
 import {
   createRoutesFromElements,
   createBrowserRouter,
@@ -16,7 +17,9 @@ const router = createBrowserRouter(
         path="/home"
         element={
           <>
-            <Header /> <Navbar />
+            <Header /> 
+            <Navbar />
+            <Banner />
           </>
         }
       />
