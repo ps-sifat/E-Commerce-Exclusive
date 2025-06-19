@@ -2,7 +2,10 @@ import React from "react";
 import { Category } from "../../../../Data/Data";
 import { FaAngleRight } from "react-icons/fa";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import bannerMokup from "../../../assets/Banner/bannerMokup.png";
+import banner from "../../../assets/Banner/Frame 560.jpg";
 import appleLogo from "../../../assets/Banner/appleLogo.png";
 import { BsArrowRight } from "react-icons/bs";
 
@@ -11,7 +14,7 @@ const Banner = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
   };
@@ -35,38 +38,51 @@ const Banner = () => {
               ))}
             </ul>
           </div>
-          <div className="w-[77%] ml-10 mt-[45px] ">
-            <Slider {...settings}>
-              <div className="h-[344px] w-[892px] bg-black flex justify-between text-white">
-              <div className="pt-[58px] pl-[64px] pb-[47px]">
-                <div className="flex items-center">
-                  <img className="h-[49px]" src={appleLogo} alt={appleLogo} />
-                  <h3 className="text-text_fafafa font-normal font-Poppins text-base leading-6 pl-6">
-                    iPhone 14 Series
-                  </h3>
-                </div>
 
-                <p className="w-[294px] mt-5 font-Inter text-5xl font-semibold text-text_fafafa leading-[60px] tracking-widest ">
-                  Up to 10% off Voucher
-                </p>
-                <div className="flex items-center mt-[22px]">
-                  <a
-                    className="mr-[8px] text-base font-Poppins text-text_fafafa banner_line hover:text-text_fafafa"
-                    href="#"
-                  >
-                    Shop Now
-                  </a>
-                  <span>
-                    <BsArrowRight />
-                  </span>
+          <div className="w-[77%] ml-10 mt-[45px] max-w-full overflow-hidden ">
+            <Slider {...settings}>
+              {[...new Array(10)].map((_, index) => (
+                <div
+                  key={index}
+                  className="h-[344px] w-[892px] bg-black flex justify-between text-white"
+                >
+                  <div className="w-[40%] h-full pt-[58px] pl-[64px] pb-[47px]">
+                    <div className="flex items-center">
+                      <img
+                        className="h-[49px]"
+                        src={appleLogo}
+                        alt={appleLogo}
+                      />
+                      <h3 className="text-text_fafafa font-normal font-Poppins text-base leading-6 pl-6">
+                        iPhone 14 Series
+                      </h3>
+                    </div>
+
+                    <p className="w-[294px] mt-5 font-Inter text-5xl font-semibold text-text_fafafa leading-[60px] tracking-widest ">
+                      Up to 10% off Voucher
+                    </p>
+                    <div className="flex items-center mt-[22px]">
+                      <a
+                        className="mr-[8px] text-base font-Poppins text-text_fafafa banner_line hover:text-text_fafafa"
+                        href="#"
+                      >
+                        Shop Now
+                      </a>
+                      <span>
+                        <BsArrowRight />
+                      </span>
+                    </div>
+                  </div>
+                  <div className="w-[60%] h-[344px]">
+                    <img
+                      className="w-full h-full object-contain"
+                      src={bannerMokup}
+                      alt="iphone"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="w-full h-full">
-                <img className="w-full h-full" src={bannerMokup} alt="" />
-              </div>
-            </div>  
+              ))}
             </Slider>
-            
           </div>
         </div>
       </div>
