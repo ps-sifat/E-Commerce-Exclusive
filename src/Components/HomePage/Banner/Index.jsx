@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import bannerMokup from "../../../assets/Banner/bannerMokup.png";
-import banner from "../../../assets/Banner/Frame 560.jpg";
+import banner from "../../../assets/Banner/bannerImage.jpg";
 import appleLogo from "../../../assets/Banner/appleLogo.png";
 import { BsArrowRight } from "react-icons/bs";
 
@@ -17,6 +17,20 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    appendDots: (dots) => (
+      <div
+        style={{
+          position: "absolute",
+          bottom: "5%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          borderRadius: "10px",
+          padding: "10px",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
   };
   return (
     <>
@@ -39,11 +53,11 @@ const Banner = () => {
             </ul>
           </div>
 
-          <div className="w-[77%] ml-10 mt-[45px] max-w-full overflow-hidden ">
-            <Slider {...settings}>
+          <div className="w-[77%] h-[420px] ml-10 mt-[45px] max-w-full overflow-hidden ">
+            <Slider className="w-full h-full" {...settings}>
               {[...new Array(10)].map((_, index) => (
                 <div
-                  key={index}
+                  key={banner._id}
                   className="h-[344px] w-[892px] bg-black flex justify-between text-white"
                 >
                   <div className="w-[40%] h-full pt-[58px] pl-[64px] pb-[47px]">
@@ -75,12 +89,16 @@ const Banner = () => {
                   </div>
                   <div className="w-[60%] h-[344px]">
                     <img
-                      className="w-full h-full object-contain"
-                      src={bannerMokup}
+                      className="w-full h-full object-contain z-10"
+                      src={banner}
                       alt="iphone"
                     />
                   </div>
                 </div>
+                // <div key={index}>
+                //   <img src={banner} alt="" />
+                //   <div className="dots"></div>
+                // </div>
               ))}
             </Slider>
           </div>
