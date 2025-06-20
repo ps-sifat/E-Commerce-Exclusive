@@ -89,7 +89,7 @@ const Navbar = () => {
               <span className="cart_count cursor-pointer">
                 <MdOutlineShoppingCart />
               </span>
-              <div className="w-8 h-8 bg-red_DB4444 rounded-full flex justify-center items-center ">
+              <div className="w-8 h-8 bg-red_DB4444 rounded-full flex justify-center items-center  ">
                 <span
                   className="text-white text-xl cursor-pointer "
                   onClick={handelAccount}
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </span>
                 {Account && (
                   <div
-                    className={`absolute right-[0%] top-[150%] z-30 bg-[rgba(0,0,0,0.68)] w-[300px] flex flex-col gap-y-5 py-7 rounded `}
+                    className={`absolute right-[0%] top-[150%] z-99 border-2 border-black bg-[rgba(143,138,138,0.68)] w-[300px] flex flex-col gap-y-5 py-7 rounded `}
                   >
                     <div className="flex items-center gap-x-2 hover:bg-white_F5F5F5 hover:py-3 transition-all hover:text-text_black000000 text-white_F5F5F5 pl-5 hover:cursor-pointer hover:bg-slate-300 hover:text-black">
                       <span className=" text-3xl ">
